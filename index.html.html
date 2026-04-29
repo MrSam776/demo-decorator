@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MP Decorating | Painter & Decorator London</title>
+  <meta name="description" content="Professional painter and decorator in London. Residential, commercial and new builds. 3 years self-employed. Own van and tools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0e0e10;
+      --ink-mid: #1c1c20;
+      --ink-light: #2c2c32;
+      --mid: #72727e;
+      --border: #e4e4ea;
+      --off-white: #f8f8fb;
+      --white: #ffffff;
+      --red: #b83232;
+      --red-bright: #d94040;
+      --red-pale: #fdf4f4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); line-height: 1.65; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 1.1rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+    .nav-logo em { color: var(--red); font-style: normal; }
+
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+    .nav-links a { font-size: 0.82rem; color: var(--mid); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta { background: var(--ink); color: var(--white); padding: 0.6rem 1.4rem; font-size: 0.82rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--red); }
+
+    /* ── HERO — Full height, text-dominant, red stripe ── */
+    .hero {
+      min-height: 100vh;
+      padding: 8rem 3rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 4rem;
+      align-items: end;
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 380px;
+      width: 4px;
+      height: 100%;
+      background: var(--red);
+    }
+
+    .hero-text { padding-bottom: 2rem; }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      color: var(--ink);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 .outline {
+      -webkit-text-stroke: 2px var(--ink);
+      color: transparent;
+    }
+
+    .hero-bottom { display: flex; align-items: flex-end; gap: 4rem; flex-wrap: wrap; }
+
+    .hero-sub { font-size: 1rem; color: var(--mid); max-width: 420px; line-height: 1.8; font-weight: 300; }
+
+    .btn-hero {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .btn-hero:hover { background: var(--red-bright); transform: translateY(-2px); }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+      border-left: 1px solid var(--border);
+      padding-left: 3rem;
+    }
+
+    .hero-stat-row { }
+    .hero-stat-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.8rem; color: var(--ink); letter-spacing: -0.04em; line-height: 1; }
+    .hero-stat-num em { color: var(--red); font-style: normal; }
+    .hero-stat-label { font-size: 0.78rem; color: var(--mid); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; }
+
+    .hero-divider { width: 100%; height: 1px; background: var(--border); }
+
+    /* ── MARQUEE STRIP ── */
+    .marquee-strip {
+      background: var(--ink);
+      overflow: hidden;
+      padding: 1rem 0;
+      white-space: nowrap;
+    }
+
+    .marquee-inner { display: inline-flex; animation: marquee 20s linear infinite; gap: 0; }
+    .marquee-item { font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); padding: 0 2.5rem; }
+    .marquee-item.red { color: var(--red); }
+
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── SERVICES — Vertical numbered accordion-style ── */
+    .services { padding: 7rem 3rem; background: var(--off-white); }
+    .services-inner { max-width: 900px; margin: 0 auto; }
+
+    .services-top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 4rem; gap: 2rem; }
+    .services-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); }
+    .services-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2rem, 3.5vw, 3rem); color: var(--ink); letter-spacing: -0.02em; flex: 1; }
+    .services-note { font-size: 0.88rem; color: var(--mid); max-width: 220px; line-height: 1.7; font-weight: 300; text-align: right; }
+
+    .service-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      cursor: default;
+      transition: background 0.2s;
+    }
+
+    .service-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .service-item:hover { background: var(--white); margin: 0 -2rem; padding-left: 2rem; padding-right: 2rem; }
+
+    .service-count { font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--border); letter-spacing: 0.1em; }
+
+    .service-info h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 0.3rem; }
+    .service-info p { font-size: 0.88rem; color: var(--mid); line-height: 1.6; font-weight: 300; }
+
+    .service-tag { font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); white-space: nowrap; }
+
+    /* ── ABOUT — Full dark band, two column text only ── */
+    .about { background: var(--ink); padding: 7rem 3rem; }
+    .about-inner { max-width: 900px; margin: 0 auto; }
+
+    .about-top { margin-bottom: 4rem; }
+    .about-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .about-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.5rem); color: var(--white); letter-spacing: -0.02em; line-height: 1.05; }
+
+    .about-body { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+
+    .about-col p { font-size: 0.95rem; color: rgba(255,255,255,0.55); font-weight: 300; line-height: 1.9; margin-bottom: 1.2rem; }
+    .about-col p:last-child { margin-bottom: 0; }
+
+    .skills-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .skill { display: flex; align-items: center; gap: 0.8rem; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+    .skill::before { content: ''; width: 20px; height: 1px; background: var(--red); flex-shrink: 0; }
+
+    .about-cta {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .about-cta-text { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--white); }
+
+    .btn-about {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      padding: 0.8rem 2rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .btn-about:hover { background: var(--red); border-color: var(--red); }
+
+    /* ── CONTACT — Statement left, form right, white bg ── */
+    .contact { padding: 7rem 3rem; background: var(--white); }
+    .contact-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+
+    .contact-left { position: sticky; top: 8rem; }
+    .contact-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 1.2rem; }
+    .contact-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2rem, 3.5vw, 3rem); color: var(--ink); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 1.5rem; }
+    .contact-body { font-size: 0.92rem; color: var(--mid); line-height: 1.8; font-weight: 300; margin-bottom: 2.5rem; }
+
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .clink { display: flex; align-items: center; gap: 0.8rem; }
+    .clink-type { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mid); width: 50px; flex-shrink: 0; }
+    .clink-val { font-size: 0.9rem; font-weight: 500; }
+    .clink-val a { color: var(--ink); text-decoration: none; }
+    .clink-val a:hover { color: var(--red); }
+
+    form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    label { font-size: 0.7rem; font-weight: 500; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    input, textarea, select {
+      background: var(--off-white);
+      border: 1.5px solid var(--border);
+      padding: 0.85rem 1rem;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      transition: border-color 0.2s;
+      width: 100%;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: #b8b8c0; }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--ink); background: var(--white); }
+    select option { background: var(--white); }
+    textarea { resize: vertical; min-height: 110px; }
+
+    .btn-submit {
+      background: var(--ink);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover { background: var(--red); }
+
+    .form-success { display: none; background: var(--off-white); border-left: 3px solid var(--red); padding: 1.2rem; color: var(--ink); font-size: 0.92rem; }
+
+    footer { background: var(--ink); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--white); font-size: 1rem; }
+    .footer-text { font-size: 0.78rem; color: rgba(255,255,255,0.2); }
+
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.2rem 3rem; gap: 2rem; }
+      .hero::before { display: none; }
+      .hero-right { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
+      .hero-divider { display: none; }
+      .services { padding: 4rem 1.2rem; }
+      .services-top { flex-direction: column; }
+      .services-note { text-align: left; }
+      .service-item { grid-template-columns: 50px 1fr; }
+      .service-tag { display: none; }
+      .about { padding: 4rem 1.2rem; }
+      .about-body { grid-template-columns: 1fr; gap: 2rem; }
+      .contact { padding: 4rem 1.2rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-left { position: static; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">MP <em>Decorating</em></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get a quote</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-tag">Painter &amp; Decorator · London</div>
+      <h1>Quality<br><span class="outline">finishes.</span><br>Every time.</h1>
+      <div class="hero-bottom">
+        <p class="hero-sub">Self-employed decorator with 3 years across high-spec new builds, commercial, and residential properties. Fully equipped with own van and tools.</p>
+        <a href="#contact" class="btn-hero">Request a quote →</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat-row">
+        <div class="hero-stat-num">3<em>yrs</em></div>
+        <div class="hero-stat-label">Self-employed</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat-row">
+        <div class="hero-stat-num">London</div>
+        <div class="hero-stat-label">Wide coverage</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat-row">
+        <div class="hero-stat-num">Res <em>&amp;</em> Com</div>
+        <div class="hero-stat-label">Residential &amp; commercial</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat-row">
+        <div class="hero-stat-num">Own van</div>
+        <div class="hero-stat-label">Fully equipped</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span class="marquee-item">Interior painting</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">Exterior &amp; weatherproofing</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">Spray finishes</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">New builds</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">Commercial</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">Surface prep</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">Interior painting</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">Exterior &amp; weatherproofing</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">Spray finishes</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">New builds</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">Commercial</span>
+      <span class="marquee-item red">·</span>
+      <span class="marquee-item">Surface prep</span>
+      <span class="marquee-item red">·</span>
+    </div>
+  </div>
+
+  <section class="services fade-in" id="services">
+    <div class="services-inner">
+      <div class="services-top">
+        <div>
+          <div class="services-label">What I do</div>
+          <h2 class="services-title">Services</h2>
+        </div>
+        <p class="services-note">Every job gets the same standard of prep and finish — whether it's one room or a full site.</p>
+      </div>
+      <div>
+        <div class="service-item">
+          <div class="service-count">01</div>
+          <div class="service-info">
+            <h3>Interior Painting</h3>
+            <p>Residential and commercial interiors. Straight lines, proper prep, and a finish that lasts.</p>
+          </div>
+          <div class="service-tag">Res &amp; Com</div>
+        </div>
+        <div class="service-item">
+          <div class="service-count">02</div>
+          <div class="service-info">
+            <h3>Exterior &amp; Weatherproofing</h3>
+            <p>External painting and sealing to protect and refresh any building against the elements.</p>
+          </div>
+          <div class="service-tag">Residential</div>
+        </div>
+        <div class="service-item">
+          <div class="service-count">03</div>
+          <div class="service-info">
+            <h3>Spray &amp; Specialist Finishes</h3>
+            <p>High-spec spray application and decorative finishes for premium residential and commercial projects.</p>
+          </div>
+          <div class="service-tag">High-spec</div>
+        </div>
+        <div class="service-item">
+          <div class="service-count">04</div>
+          <div class="service-info">
+            <h3>Surface Preparation</h3>
+            <p>Filling, sanding, caulking, priming, and sealing — done properly before a brush goes near the wall.</p>
+          </div>
+          <div class="service-tag">All projects</div>
+        </div>
+        <div class="service-item">
+          <div class="service-count">05</div>
+          <div class="service-info">
+            <h3>New Build Contracts</h3>
+            <p>Reliable, tidy, and on schedule on busy multi-trade new build sites across London.</p>
+          </div>
+          <div class="service-tag">Commercial</div>
+        </div>
+        <div class="service-item">
+          <div class="service-count">06</div>
+          <div class="service-info">
+            <h3>Commercial Interiors</h3>
+            <p>Offices, retail, and hospitality fit-outs delivered with minimal disruption to the business.</p>
+          </div>
+          <div class="service-tag">Commercial</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about fade-in" id="about">
+    <div class="about-inner">
+      <div class="about-top">
+        <div class="about-label">Who you're hiring</div>
+        <h2 class="about-title">Three years of getting it right first time</h2>
+      </div>
+      <div class="about-body">
+        <div class="about-col">
+          <p>I'm Matt — a self-employed painter and decorator with 3 years of experience across high-spec new builds, commercial fit-outs, and residential properties across London.</p>
+          <p>I'm reliable, detail-oriented, and I take genuine pride in a quality finish. I come fully equipped with my own tools and van — I've never turned up without what I need — and I always leave a site cleaner than I found it.</p>
+          <p>I'm comfortable on busy multi-trade sites and used to managing expectations directly with clients. Straight communication, agreed schedules, and delivered on time.</p>
+        </div>
+        <div class="about-col">
+          <p>I'm fully insured and hold a full UK driving licence. I work across London and am used to the pace and standards that London jobs demand.</p>
+          <div class="skills-list">
+            <div class="skill">Surface preparation — filling, sanding, priming, caulking</div>
+            <div class="skill">Spray painting &amp; specialist decorative finishes</div>
+            <div class="skill">External painting &amp; weatherproofing</div>
+            <div class="skill">Working safely at height — towers &amp; access equipment</div>
+            <div class="skill">Client liaison &amp; schedule management</div>
+            <div class="skill">H&amp;S compliant on multi-trade sites</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-cta">
+        <div class="about-cta-text">Ready to discuss your job?</div>
+        <a href="#contact" class="btn-about">Get in touch →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact fade-in" id="contact">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="contact-label">Contact</div>
+        <h2 class="contact-title">Get a quote</h2>
+        <p class="contact-body">Tell me about the job and I'll get back to you within 24 hours. No jargon, no obligation — just a straight price for what you need done.</p>
+        <div class="contact-links">
+          <div class="clink">
+            <div class="clink-type">Email</div>
+            <div class="clink-val"><a href="mailto:matt@mpdecorating.co.uk">matt@mpdecorating.co.uk</a></div>
+          </div>
+          <div class="clink">
+            <div class="clink-type">Phone</div>
+            <div class="clink-val"><a href="tel:+447000000000">+44 7000 000 000</a></div>
+          </div>
+          <div class="clink">
+            <div class="clink-type">Area</div>
+            <div class="clink-val">London-wide</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form id="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="Your email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+44 7000 000000" />
+          </div>
+          <div class="form-group">
+            <label for="type">Type of job</label>
+            <select id="type" name="type">
+              <option value="">Select one</option>
+              <option>Residential interior</option>
+              <option>Residential exterior</option>
+              <option>Commercial</option>
+              <option>New build</option>
+              <option>Other / not sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Describe the job</label>
+            <textarea id="message" name="message" placeholder="What needs doing, rough size, location, timescale..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send enquiry →</button>
+        </form>
+        <div class="form-success" id="form-success">✓ Message received — I'll be in touch within 24 hours.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">MP Decorating</div>
+    <div class="footer-text">Painter &amp; Decorator · London · Residential &amp; Commercial · © 2025</div>
+  </footer>
+
+  <script>
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(el => { if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); } });
+    }, { threshold: 0.06 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (res.ok) { form.style.display = 'none'; success.style.display = 'block'; }
+    });
+  </script>
+</body>
+</html>
